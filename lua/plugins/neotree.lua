@@ -12,7 +12,7 @@ return {
 	---@type neotree.Config?
 	opts = {
 		filesystem = {
-         hijack_netrw = true,
+			hijack_netrw = true,
 			follow_current_file = { enabled = true },
 			hijack_netrw_behavior = "open_current",
 			filtered_items = {
