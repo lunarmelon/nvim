@@ -9,10 +9,10 @@ local opts = { noremap = true, silent = true }
 keymap.set("n", "<leader>e", ":Neotree toggle<CR>", opts)
 
 -- Pane navigation
-keymap.set("n", "<C-h>", "<C-w>h", opts) -- Navigate left
-keymap.set("n", "<C-j>", "<C-w>j", opts) -- Navigate down
-keymap.set("n", "<C-k>", "<C-w>k", opts) -- Navigate up
-keymap.set("n", "<C-l>", "<C-w>l", opts) -- Navigate right
+-- keymap.set("n", "<C-h>", "<C-w>h", opts) -- Navigate left
+-- keymap.set("n", "<C-j>", "<C-w>j", opts) -- Navigate down
+-- keymap.set("n", "<C-k>", "<C-w>k", opts) -- Navigate up
+-- keymap.set("n", "<C-l>", "<C-w>l", opts) -- Navigate right
 
 -- Window management
 keymap.set("n", "<leader>sv", ":vsplit<CR>", opts) -- Split vertically
