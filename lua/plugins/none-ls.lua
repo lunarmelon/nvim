@@ -1,6 +1,5 @@
 return {
 	"nvimtools/none-ls.nvim",
-	lazy = false,
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",
 		"jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
@@ -17,6 +16,7 @@ return {
 				"stylua", -- lua formatter
 				"eslint_d", -- ts/js linter
 				"shfmt", -- Shell formatter
+				"checkmake", -- linter for Makefiles
 				"ruff", -- Python linter and formatter
 			},
 			automatic_installation = true,
