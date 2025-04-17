@@ -204,6 +204,7 @@ return {
 			astro = {},
 			taplo = {},
 			django_template_lsp = {},
+			marksman = {},
 
 			lua_ls = {
 				-- cmd = {...},
