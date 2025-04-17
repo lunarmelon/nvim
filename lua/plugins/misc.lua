@@ -36,9 +36,28 @@ return {
 	},
 	{
 		-- High-performance color highlighter
-		"norcalli/nvim-colorizer.lua",
+		"catgoose/nvim-colorizer.lua",
+		event = "BufReadPre",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				user_default_options = {
+					tailwind = true,
+				},
+			})
+		end,
+	},
+	{
+		"barrett-ruth/live-server.nvim",
+		build = "npm add -g live-server",
+		cmd = { "LiveServerStart", "LiveServerStop" },
+		config = true,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
 		end,
 	},
 }

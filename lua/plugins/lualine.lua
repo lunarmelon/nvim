@@ -1,18 +1,19 @@
+-- Set lualine as statusline
 return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
 		local mode = {
 			"mode",
 			fmt = function(str)
-				return " " .. str
 				-- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
+				return " " .. str
 			end,
 		}
 
 		local filename = {
 			"filename",
 			file_status = true, -- displays file status (readonly status, modified status)
-			path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+			path = 0,  -- 0 = just filename, 1 = relative path, 2 = absolute path
 		}
 
 		local hide_in_width = function()
@@ -40,13 +41,13 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "tokyonight", -- Set theme based on environment variable
+				theme = require("lualine.themes.catppuccin-mocha"),
 				-- Some useful glyphs:
 				-- https://www.nerdfonts.com/cheat-sheet
 				--        
-				section_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "neo-tree" },
+				disabled_filetypes = { "alpha", "neo-tree", "Avante" },
 				always_divide_middle = true,
 			},
 			sections = {

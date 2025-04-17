@@ -16,20 +16,35 @@ return {
 				"stylua", -- lua formatter
 				"eslint_d", -- ts/js linter
 				"shfmt", -- Shell formatter
-				"checkmake", -- linter for Makefiles
 				"ruff", -- Python linter and formatter
+				"clang-format", -- C/C++ formatter
 			},
 			automatic_installation = true,
 		})
 
 		local sources = {
-			diagnostics.checkmake,
-			formatting.prettier.with({ filetypes = { "html", "json", "yaml", "markdown" } }),
+			-- HTML/CSS/JS
+			formatting.prettier,
+
+			-- LUA
 			formatting.stylua,
+
+			-- SHELL
 			formatting.shfmt.with({ args = { "-i", "4" } }),
-			formatting.terraform_fmt,
+
+			-- PYTHON
 			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
 			require("none-ls.formatting.ruff_format"),
+
+			-- DJANGO
+			diagnostics.djlint,
+			formatting.djlint,
+
+			-- C/C++
+			formatting.clang_format,
+
+			-- DOCKERFILE
+			diagnostics.hadolint,
 		}
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

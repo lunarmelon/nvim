@@ -9,7 +9,14 @@ return {
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		{ "j-hui/fidget.nvim", opts = {} },
+		{
+			"j-hui/fidget.nvim",
+			opts = {
+				progress = {
+					display = { done_icon = "✓" },
+				},
+			},
+		},
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
@@ -162,30 +169,41 @@ return {
 			--    https://github.com/pmizio/typescript-tools.nvim
 			--
 			-- But for many setups, the LSP (`tsserver`) will work just fine
-			ts_ls = {}, -- tsserver is deprecated
-			ruff = {},
-			pylsp = {
+			ts_ls = {
 				settings = {
-					pylsp = {
-						plugins = {
-							pyflakes = { enabled = false },
-							pycodestyle = { enabled = false },
-							autopep8 = { enabled = false },
-							yapf = { enabled = false },
-							mccabe = { enabled = false },
-							pylsp_mypy = { enabled = false },
-							pylsp_black = { enabled = false },
-							pylsp_isort = { enabled = false },
-						},
+					typescript = {
+						indentStyle = "Space",
+						indentSize = "2",
+					},
+				},
+				root_dir = require("lspconfig").util.root_pattern("package.json", "tsconfig.json", "git"),
+			},
+			ruff = {},
+			pyright = {
+				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+						analysis = { autoSearchPaths = true, autoImportCompletion = true },
 					},
 				},
 			},
-			html = { filetypes = { "html", "twig", "hbs" } },
+			html = {
+				filetypes = {
+					"html",
+					"javascriptreact",
+					"typescriptreact",
+				},
+			},
+			emmet_ls = {},
 			cssls = {},
 			tailwindcss = {},
 			dockerls = {},
 			jsonls = {},
 			yamlls = {},
+			clangd = {},
+			astro = {},
+			taplo = {},
+			django_template_lsp = {},
 
 			lua_ls = {
 				-- cmd = {...},
