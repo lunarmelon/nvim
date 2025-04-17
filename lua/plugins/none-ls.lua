@@ -24,7 +24,9 @@ return {
 
 		local sources = {
 			-- HTML/CSS/JS
-			formatting.prettier,
+			formatting.prettier.with({
+				extra_filetypes = { "toml" },
+			}),
 
 			-- LUA
 			formatting.stylua,
