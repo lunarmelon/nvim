@@ -12,19 +12,23 @@ return {
 		-- Formatters & linters for mason to install
 		require("mason-null-ls").setup({
 			ensure_installed = {
-				"prettier", -- ts/js formatter
-				"stylua", -- lua formatter
-				"eslint_d", -- ts/js linter
+				"prettierd", -- TS/JS formatter
+				"stylua", -- Lua formatter
 				"shfmt", -- Shell formatter
 				"ruff", -- Python linter and formatter
 				"clang-format", -- C/C++ formatter
+				"djlint", -- Django linter and formatter
+				"hadolint", -- Dockerfile linter
+				"php-cs-fixer", -- PHP formatter
+				"phpstan", -- PHP linter
+				"goimports", -- Go formatter
 			},
 			automatic_installation = true,
 		})
 
 		local sources = {
 			-- HTML/CSS/JS
-			formatting.prettier.with({
+			formatting.prettierd.with({
 				extra_filetypes = { "toml" },
 			}),
 
@@ -47,6 +51,13 @@ return {
 
 			-- DOCKERFILE
 			diagnostics.hadolint,
+
+			-- PHP
+			formatting.phpcsfixer,
+			diagnostics.phpstan,
+
+			-- GO
+			formatting.goimports,
 		}
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

@@ -20,6 +20,7 @@ return {
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
+		"b0o/schemastore.nvim",
 	},
 	config = function()
 		-- Brief aside: **What is LSP?**
@@ -198,13 +199,24 @@ return {
 			cssls = {},
 			tailwindcss = {},
 			dockerls = {},
-			jsonls = {},
+			jsonls = {
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			},
 			yamlls = {},
 			clangd = {},
 			astro = {},
 			taplo = {},
 			django_template_lsp = {},
 			marksman = {},
+			intelephense = {},
+			gopls = {},
+			svelte = {},
+			vimls = {},
 
 			lua_ls = {
 				-- cmd = {...},
