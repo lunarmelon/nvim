@@ -193,10 +193,34 @@ return {
 					"html",
 					"javascriptreact",
 					"typescriptreact",
+					"php",
+					"phtml",
+					"blade",
+					"astro",
 				},
 			},
-			emmet_ls = {},
-			cssls = {},
+			emmet_ls = {
+				filetypes = {
+					"html",
+					"css",
+					"javascriptreact",
+					"typescriptreact",
+					"php",
+					"phtml",
+					"blade",
+					"astro",
+				},
+			},
+			cssls = {
+				filetypes = {
+					"css",
+					"scss",
+					"less",
+					"php",
+					"phtml",
+					"blade",
+				},
+			},
 			tailwindcss = {},
 			dockerls = {},
 			jsonls = {
@@ -211,12 +235,16 @@ return {
 			clangd = {},
 			astro = {},
 			taplo = {},
-			django_template_lsp = {},
 			marksman = {},
-			intelephense = {},
+			intelephense = {
+				root_dir = require("lspconfig").util.root_pattern(
+					"composer.jon",
+					".git",
+					require("lspconfig").util.path.dirname(vim.api.nvim_buf_get_name(0))
+				),
+			},
 			gopls = {},
 			svelte = {},
-			vimls = {},
 
 			lua_ls = {
 				-- cmd = {...},
@@ -235,7 +263,6 @@ return {
 								vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
 							},
 						},
-						telemetry = { enable = false },
 					},
 				},
 			},
