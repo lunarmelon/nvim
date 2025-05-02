@@ -19,8 +19,6 @@ return { -- Highlight, edit, and navigate code
 			"go",
 			"gitignore",
 			"yaml",
-			"make",
-			"cmake",
 			"markdown",
 			"markdown_inline",
 			"bash",

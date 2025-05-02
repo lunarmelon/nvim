@@ -73,6 +73,9 @@ return {
 					require("telescope.themes").get_dropdown(),
 				},
 			},
+			git_files = {
+				previewer = false,
+			},
 		})
 
 		-- Enable Telescope extensions if they are installed
