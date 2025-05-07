@@ -14,7 +14,7 @@ return {
 				sh = { "shfmt" },
 				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 				html = { "prettierd" },
-				css = { "prettierd", "stylelint" },
+				css = { "prettierd" },
 				javascript = { "biome", "biome-check", "biome-organize-imports" },
 				typescript = { "biome", "biome-check", "biome-organize-imports" },
 				javascriptreact = { "biome", "biome-check", "biome-organize-imports" },

@@ -31,4 +31,5 @@ require("lazy").setup({
 	require("plugins.comment"),
 	require("plugins.noice"),
 	require("plugins.trouble"),
+	require("plugins.ts-tools"),
 })
