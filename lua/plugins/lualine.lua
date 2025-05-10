@@ -1,6 +1,20 @@
 -- Set lualine as statusline
 return {
 	"nvim-lualine/lualine.nvim",
+	init = function()
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "NvimTree",
+			callback = function()
+				vim.opt_local.laststatus = 0
+			end,
+		})
+		vim.api.nvim_create_autocmd("BufLeave", {
+			pattern = "NvimTree",
+			callback = function()
+				vim.opt.laststatus = 2 -- or 2, depending on your setup
+			end,
+		})
+	end,
 	config = function()
 		local mode = {
 			"mode",
@@ -47,7 +61,7 @@ return {
 				--        
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "neo-tree", "Avante" },
+				disabled_filetypes = { "alpha", "NvimTree", "Avante" },
 				always_divide_middle = true,
 			},
 			sections = {
