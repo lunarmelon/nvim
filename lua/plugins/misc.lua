@@ -9,14 +9,6 @@ return {
 		"tpope/vim-sleuth",
 	},
 	{
-		-- Powerful Git integration for Vim
-		"tpope/vim-fugitive",
-	},
-	{
-		-- GitHub integration for vim-fugitive
-		"tpope/vim-rhubarb",
-	},
-	{
 		-- Hints keybinds
 		"folke/which-key.nvim",
 	},
@@ -38,13 +30,12 @@ return {
 		-- High-performance color highlighter
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
-		config = function()
-			require("colorizer").setup({
-				user_default_options = {
-					tailwind = true,
-				},
-			})
-		end,
+		opts = {
+			user_default_options = {
+				names = false,
+				tailwind = true,
+			},
+		},
 	},
 	{
 		"barrett-ruth/live-server.nvim",

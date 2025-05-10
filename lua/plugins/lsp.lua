@@ -3,9 +3,19 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
-		{ "mason-org/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+		{
+			"mason-org/mason.nvim",
+			opts = {
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			},
+		}, -- NOTE: Must be loaded before dependants
 		"mason-org/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -17,7 +27,6 @@ return {
 				},
 			},
 		},
-
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/schemastore.nvim",
@@ -135,11 +144,11 @@ return {
 				-- code, if the language server you are using supports them
 				--
 				-- This may be unwanted, since they displace some of your code
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+				--[[ if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
-				end
+				end ]]
 			end,
 		})
 
@@ -166,7 +175,6 @@ return {
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
-			ruff = {},
 			pyright = {
 				settings = {
 					pyright = {
@@ -208,8 +216,6 @@ return {
 					"blade",
 				},
 			},
-			tailwindcss = {},
-			dockerls = {},
 			jsonls = {
 				settings = {
 					json = {
@@ -218,11 +224,6 @@ return {
 					},
 				},
 			},
-			yamlls = {},
-			clangd = {},
-			astro = {},
-			taplo = {},
-			marksman = {},
 			intelephense = {
 				root_dir = require("lspconfig").util.root_pattern(
 					"composer.jon",
@@ -230,9 +231,6 @@ return {
 					require("lspconfig").util.path.dirname(vim.api.nvim_buf_get_name(0))
 				),
 			},
-			gopls = {},
-			svelte = {},
-
 			lua_ls = {
 				-- cmd = {...},
 				-- filetypes = { ...},
@@ -255,23 +253,35 @@ return {
 			},
 		}
 
-		-- Ensure the servers and tools above are installed
-		--  To check the current status of installed tools and/or manually install
-		--  other tools, you can run
-		--    :Mason
-		--
-		--  You can press `g?` for help in this menu.
-		require("mason").setup()
-
 		-- You can add other tools here that you want Mason to install
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format Lua code
+			-- LSPs
+			"angularls",
+			"astro",
+			"bashls",
+			"biome",
+			"clangd",
+			"cssls",
+			"dockerls",
+			"emmet_ls",
+			"gopls",
+			"html",
+			"intelephense",
+			"jsonls",
+			"lua_ls",
+			"marksman",
+			"pyright",
+			"ruff",
+			"svelte",
+			"tailwindcss",
+			"taplo",
+			"yamlls",
 		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("mason-lspconfig").setup({
+			automatic_enable = true,
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
@@ -282,6 +292,7 @@ return {
 					require("lspconfig")[server_name].setup(server)
 				end,
 			},
+			ensure_installed = ensure_installed,
 		})
 	end,
 }
