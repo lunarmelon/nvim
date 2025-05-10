@@ -12,6 +12,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				sh = { "shfmt" },
+				zsh = { "beautysh" },
 				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 				html = { "prettierd" },
 				css = { "prettierd" },
