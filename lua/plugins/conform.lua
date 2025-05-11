@@ -33,6 +33,7 @@ return {
 				cpp = { "clang-format" },
 				markdown = { "prettierd" },
 				markdown_inline = { "prettierd" },
+				tex = { "latexindent" },
 			},
 		})
 	end,
