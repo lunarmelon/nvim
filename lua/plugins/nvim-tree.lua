@@ -4,6 +4,9 @@ return {
 		vim.cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
 		require("nvim-tree").setup({
 			renderer = {
+				root_folder_label = function(path)
+					return vim.fn.fnamemodify(path, ":t")
+				end,
 				highlight_git = true,
 				indent_markers = {
 					enable = true, -- enables indent lines
