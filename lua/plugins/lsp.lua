@@ -224,6 +224,11 @@ return {
 					},
 				},
 			},
+			ts_ls = {
+				filetypes = {
+					"javascript, javascriptreact",
+				},
+			},
 			intelephense = {
 				root_dir = require("lspconfig").util.root_pattern(
 					"composer.jon",
