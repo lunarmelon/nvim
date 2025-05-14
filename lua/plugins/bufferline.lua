@@ -19,8 +19,12 @@ return {
 				max_name_length = 30,
 				max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
 				tab_size = 21,
-				diagnostics = false,
-				diagnostics_update_in_insert = false,
+				diagnostics = "nvim_lsp",
+				diagnostics_indicator = function(_, _, diag)
+					local icons = require("utils.icons").diagnostics
+					local indicator = (diag.error and icons.ERROR .. " " or "") .. (diag.warning and icons.WARN or "")
+					return vim.trim(indicator)
+				end,
 				color_icons = true,
 				show_buffer_icons = true,
 				show_buffer_close_icons = true,
@@ -28,7 +32,7 @@ return {
 				persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 				separator_style = { "│", "│" }, -- | "thick" | "thin" | { 'any', 'any' },
 				enforce_regular_tabs = false,
-				always_show_bufferline = true,
+				always_show_bufferline = false,
 				show_tab_indicators = false,
 				indicator = {
 					-- icon = '▎', -- this should be omitted if indicator style is not 'icon'

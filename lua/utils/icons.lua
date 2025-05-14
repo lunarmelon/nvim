@@ -30,4 +30,12 @@ M.symbol_kinds = {
 	Variable = "󰀫",
 }
 
+--- Diagnostic severities.
+M.diagnostics = {
+	ERROR = " ",
+	WARN = " ",
+	HINT = "",
+	INFO = " ",
+}
+
 return M
