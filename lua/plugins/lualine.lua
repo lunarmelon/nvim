@@ -42,13 +42,14 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = require("lualine.themes.catppuccin-mocha"),
+				--theme = require("lualine.themes.catppuccin-mocha"),
+				theme = require("lualine.themes.tokyonight-night"),
 				-- Some useful glyphs:
 				-- https://www.nerdfonts.com/cheat-sheet
 				--        
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "NvimTree" },
+				disabled_filetypes = { "snacks_dashboard", "neo-tree" },
 				always_divide_middle = true,
 			},
 			sections = {
