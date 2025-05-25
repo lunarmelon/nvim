@@ -34,7 +34,7 @@ M.symbol_kinds = {
 M.diagnostics = {
 	ERROR = " ",
 	WARN = " ",
-	HINT = "",
+	HINT = "󰌵",
 	INFO = " ",
 }
 
