@@ -5,5 +5,7 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
+		quickfile = { enabled = true },
+		scroll = { enabled = true },
 	},
 }
